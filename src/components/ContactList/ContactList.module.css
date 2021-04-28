@@ -1,0 +1,56 @@
+.list {
+  margin: auto;
+  text-align: center;
+  width: 600px;
+}
+
+.list_item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  padding: 12px;
+
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}
+
+/* .list_item + .list_item {
+  margin-top: 12px;
+}
+
+.list_item.completed {
+  background-color: green;
+} */
+/* 
+.list_text {
+  flex: 0 0 65%;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: 16px;
+  border-radius: 3px;
+}
+
+.list_actions {
+  display: flex;
+  justify-content: center;
+} */
+
+.list_button {
+  color: white;
+  cursor: pointer;
+  border-width: 2px 0;
+  border-style: solid none;
+  border-color: #fdbe33 #000 #d77206;
+  border-radius: 6px;
+  background-color: #d77206;
+  margin-right: 30px;
+  margin-left: 4px;
+}
+
+.list_button:hover {
+  background: rgb(163, 92, 83);
+}
+.list_button:active {
+  background: rgb(99, 52, 46);
+}
