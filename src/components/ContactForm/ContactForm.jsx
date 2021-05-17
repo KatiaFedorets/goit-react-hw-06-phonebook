@@ -83,9 +83,13 @@ const mapDispatchToProps = dispatch => ({
 
 ContactForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  number: PropTypes.string.isRequired,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    }),
+  ),
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);

@@ -35,6 +35,11 @@ const mapDispatchToProps = dispatch => ({
   onDeleteContacts: text => dispatch(contactsActions.deleteContact(text)),
 });
 
+ContactList.defaultProps = {
+  contacts: [],
+  onDeleteContact: () => {},
+};
+
 ContactList.propTypes = {
   onDeleteContacts: PropTypes.func.isRequired,
   contacts: PropTypes.arrayOf(
