@@ -1,31 +1,38 @@
-import { Component } from "react";
-import PropTypes from "prop-types";
-import styles from "./ContactForm.module.css";
+import { Component } from 'react';
+import PropTypes from 'prop-types';
+import styles from './ContactForm.module.css';
+import { connect } from 'react-redux';
+import contactsActions from '../../redux/contacts/contacts-actions';
 
 class ContactForm extends Component {
   state = {
-    name: "",
-    number: ""
+    name: '',
+    number: '',
   };
 
   handelNameChange = event => {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
   };
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.onSubmit(this.state);
-    this.resetForm();
+    const { name } = this.state;
+    const isNameExist = this.props.items.find(item => item.name === name);
+    if (isNameExist) {
+      alert(`${name} is already in contacts`);
+    } else {
+      this.props.onSubmit(this.state);
+    }
 
-    console.log(event);
+    this.resetForm();
   };
 
   resetForm = () => {
     this.setState({
-      name: "",
-      number: ""
+      name: '',
+      number: '',
     });
   };
 
@@ -66,10 +73,19 @@ class ContactForm extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  items: state.contacts.items,
+});
+
+const mapDispatchToProps = dispatch => ({
+  onSubmit: text => dispatch(contactsActions.addContact(text)),
+});
+
 ContactForm.propTypes = {
-  handelNameChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  number: PropTypes.string.isRequired
+  number: PropTypes.string.isRequired,
 };
 
-export default ContactForm;
+export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
